@@ -63,6 +63,7 @@ static const Rule rules[] = {
 	{ NULL,       NULL,       "Event Tester",   0,            0,           0,         1,        -1 },
 	{ NULL,      "spterm",    NULL,       	    SPTAG(0),     1,           1,         0,        -1 },
 	{ NULL,      "spcalc",    NULL,       	    SPTAG(1),     1,           1,         0,        -1 },
+	{ NULL,      "sphtop",    NULL,       	    SPTAG(2),     1,           1,         0,        -1 },
 	{ NULL,       NULL,    	  "lf",       	    0,     	  0,           1,         0,        -1 },
 };
 
