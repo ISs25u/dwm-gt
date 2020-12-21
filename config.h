@@ -42,11 +42,13 @@ typedef struct {
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
 const char *spcmd2[] = {"st", "-n", "spcalc", "-f", "monospace:size=10", "-g", "60x16", "-e", "bc", "-lq", NULL };
 const char *spcmd3[] = {"st", "-n", "sphtop", "-g", "140x40", "-e", "htop", "-t", NULL };
+const char *spcmd4[] = {"st", "-n", "spmixer", "-g", "120x34", "-e", "pulsemixe", "kill", "-44", "$(pidof dwmblocks)", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
 	{"spcalc",      spcmd2},
         {"sphtop",      spcmd3},
+        {"spmixer",     spcmd4},
 };
 
 /* tagging */
@@ -64,6 +66,7 @@ static const Rule rules[] = {
 	{ NULL,      "spterm",    NULL,       	    SPTAG(0),     1,           1,         0,        -1 },
 	{ NULL,      "spcalc",    NULL,       	    SPTAG(1),     1,           1,         0,        -1 },
 	{ NULL,      "sphtop",    NULL,       	    SPTAG(2),     1,           1,         0,        -1 },
+	{ NULL,      "spmixer",  NULL,       	    SPTAG(3),     1,           1,         0,        -1 },
 	{ NULL,       NULL,    	  "lf",       	    0,     	  0,           1,         0,        -1 },
 };
 
@@ -156,7 +159,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_g,		shifttag,	{ .i = -1 } },
 	{ MODKEY,			XK_h,		setmfact,	{.f = -0.05} },
 	{ MODKEY,			XK_l,		setmfact,      	{.f = +0.05} },
-	{ MODKEY,			XK_m,		spawn,		SHCMD("st -e pulsemixer; kill -44 $(pidof dwmblocks)") },
         { MODKEY,			XK_Left,	focusmon,	{.i = -1 } },
 	{ MODKEY,			XK_Right,	focusmon,	{.i = +1 } },
 	{ MODKEY|ShiftMask,		XK_Left,	tagmon,		{.i = -1 } },
@@ -165,6 +167,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_Return,	spawn,		{.v = termcmd } },
 	{ MODKEY|ShiftMask,		XK_Return,	togglescratch,	{.ui = 0} },
 	{ MODKEY,			XK_equal,	togglescratch,	{.ui = 1} },
+	{ MODKEY,			XK_m,		togglescratch,  {.ui = 3} },        //spawn,		SHCMD("st -e pulsemixer; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,			XK_z,		incrgaps,	{.i = +3 } },
 	{ MODKEY|ShiftMask,		XK_z,		incrgaps,	{.i = -3 } },
 	{ MODKEY,			XK_b,		togglebar,	{0} },
