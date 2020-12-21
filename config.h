@@ -37,7 +37,7 @@ const char *spcmd2[] = {"st", "-n", "spcalc", "-f", "monospace:size=10", "-g", "
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
-	{"spranger",    spcmd2},
+	{"spcalc",      spcmd2},
 };
 
 /* tagging */
@@ -117,8 +117,6 @@ static Key keys[] = {
 	TAGKEYS(			XK_egrave,			6)
 	TAGKEYS(			XK_underscore,			7)
 	TAGKEYS(			XK_ccedilla,			8)
-	{ MODKEY,			XK_agrave,	view,		{.ui = ~0 } },
-	{ MODKEY|ShiftMask,		XK_agrave,	tag,		{.ui = ~0 } },
 	{ MODKEY,			XK_Escape,	spawn,		SHCMD("sysact") },
 	{ MODKEY|ShiftMask,		XK_Escape,	spawn,		SHCMD("sysact") },
 	{ MODKEY,			XK_Tab,		view,		{0} },
@@ -155,16 +153,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_z,		incrgaps,	{.i = -3 } },
 	{ MODKEY,			XK_b,		togglebar,	{0} },
         { MODKEY,			XK_Insert,	spawn,		SHCMD("notify-send \" Clipboard contents:\" \"$(xclip -o -selection clipboard)\"") },
-/*	{ MODKEY,			XK_F3,		spawn,		SHCMD("") },*/
 	{ MODKEY,			XK_F2,		spawn,		SHCMD("st -e connman_dmenu; kill -38 $(pidof dwmblocks)") },
 	{ MODKEY,			XK_F1,		spawn,		SHCMD("displayselect") },
-	{ MODKEY,			XK_F5,		xrdb,		{.v = NULL } },
-/*	{ MODKEY,			XK_F6,		spawn,		SHCMD("torwrap") },*/
-/*	{ MODKEY,			XK_F7,		spawn,		SHCMD("td-toggle") },*/
-/*	{ MODKEY,			XK_F8,		spawn,		SHCMD("mailsync") },*/
 	{ MODKEY,			XK_F9,		spawn,		SHCMD("dmenumount") },
 	{ MODKEY,			XK_F10,		spawn,		SHCMD("dmenuumount") },
-	{ MODKEY,			XK_F11,		spawn,		SHCMD("mpv --no-cache --no-osc --no-input-default-bindings --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
 	{ MODKEY,			XK_F12,		xrdb,		{.v = NULL } },
 	{ MODKEY,			XK_space,	zoom,		{0} },
 	{ MODKEY|ShiftMask,		XK_space,	togglefloating,	{0} },
