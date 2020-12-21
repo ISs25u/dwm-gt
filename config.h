@@ -34,10 +34,12 @@ typedef struct {
 } Sp;
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
 const char *spcmd2[] = {"st", "-n", "spcalc", "-f", "monospace:size=10", "-g", "60x16", "-e", "bc", "-lq", NULL };
+const char *spcmd3[] = {"st", "-n", "sphtop", "-g", "140x50", "-e", "htop", "-t", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
 	{"spcalc",      spcmd2},
+        {"sphtop",      spcmd3},
 };
 
 /* tagging */
@@ -123,7 +125,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_q,		killclient,	{0} },
 	{ MODKEY,			XK_w,		spawn,		SHCMD("$BROWSER") },
 	{ MODKEY,			XK_r,		spawn,		SHCMD("st -e lf") },
-	{ MODKEY|ShiftMask,		XK_p,		spawn,		SHCMD("st -e htop") },
+	{ MODKEY|ShiftMask,		XK_p,		togglescratch,  {.ui = 2} },
 	{ MODKEY,			XK_t,		setlayout,	{.v = &layouts[0]} }, /* tile */
 	{ MODKEY|ShiftMask,		XK_t,		setlayout,	{.v = &layouts[1]} }, /* bstack */
 	{ MODKEY,			XK_y,		setlayout,	{.v = &layouts[2]} }, /* spiral */
@@ -148,8 +150,8 @@ static Key keys[] = {
 	{ MODKEY,			XK_l,		setmfact,      	{.f = +0.05} },
 	{ MODKEY,			XK_m,		spawn,		SHCMD("st -e pulsemixer; kill -44 $(pidof dwmblocks)") },
         { MODKEY,			XK_Left,	focusmon,	{.i = -1 } },
-	{ MODKEY|ShiftMask,		XK_Left,	tagmon,		{.i = -1 } },
 	{ MODKEY,			XK_Right,	focusmon,	{.i = +1 } },
+	{ MODKEY|ShiftMask,		XK_Left,	tagmon,		{.i = -1 } },
 	{ MODKEY|ShiftMask,		XK_Right,	tagmon,		{.i = +1 } },
 
 	{ MODKEY,			XK_Return,	spawn,		{.v = termcmd } },
